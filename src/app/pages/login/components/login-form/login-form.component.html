@@ -1,15 +1,16 @@
 <ng-container *ngIf="form">
-  <div>
   <form [formGroup]="form" (submit)="onSubmit()">
-    <div>
+    <div class="mb-4">
       <label>
         User Name
+        <br/>
         <input formControlName="userName">
       </label>
     </div>
-    <div>
+    <div class="mb-4">
       <label>
         Password
+        <br/>
         <input formControlName="password" type="password">
       </label>
     </div>
@@ -17,5 +18,4 @@
       Login
     </button>
   </form>
-  </div>
 </ng-container>
