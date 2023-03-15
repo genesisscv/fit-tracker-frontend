@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {passwordValidator} from "../validators/password.validator";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class LoginFormService {
   public getLoginForm() {
     return this.formBuilder.group({
       userName: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, passwordValidator()]]
     })
   }
 }

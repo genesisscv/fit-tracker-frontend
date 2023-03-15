@@ -1,18 +1,21 @@
-<p>login-form works!</p>
 <ng-container *ngIf="form">
-  <form formGroupName="form" (submit)="onSubmit()">
+  <div>
+  <form [formGroup]="form" (submit)="onSubmit()">
     <div>
       <label>
+        User Name
         <input formControlName="userName">
       </label>
     </div>
     <div>
       <label>
-        <input formControlName="password">
+        Password
+        <input formControlName="password" type="password">
       </label>
     </div>
     <button type="submit" class="btn btn-primary">
       Login
     </button>
   </form>
+  </div>
 </ng-container>
