@@ -1,6 +1,7 @@
-import {Component, forwardRef, OnInit} from '@angular/core';
+import {Component, EventEmitter, forwardRef, OnInit, Output} from '@angular/core';
 import {LoginFormService} from "./common/login-form-service/login-form-service.service";
 import {FormGroup} from "@angular/forms";
+import {LoginFormInterface} from "./common/login-form.interface";
 
 @Component({
   selector: 'login-form',
@@ -8,6 +9,9 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
+  @Output()
+  private onFormSubmit: EventEmitter<LoginFormInterface> = new EventEmitter<LoginFormInterface>()
+
   public form: FormGroup;
 
   constructor(private loginFormService: LoginFormService) {
@@ -18,7 +22,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.getRawValue());
-    window.alert('submit')
+    if(this.form.valid) {
+      this.onFormSubmit.emit(this.form.getRawValue())
+    }
   }
 }

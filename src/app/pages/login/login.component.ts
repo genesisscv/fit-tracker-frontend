@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {LoginFormInterface} from "./components/login-form/common/login-form.interface";
 
 @Component({
     templateUrl: './login.component.html',
@@ -6,6 +7,11 @@ import {Component} from '@angular/core';
 })
 export class LoginComponent {
 
-    constructor() {}
+    constructor() {
+    }
+
+    onFormSubmit(loginDetails: LoginFormInterface) {
+        console.log(loginDetails);
+    }
 }
 
