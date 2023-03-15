@@ -3,3 +3,5 @@
     <login-form (onFormSubmit)="onFormSubmit($event)"></login-form>
   </div>
 </div>
+
+<ng-container *ngIf="loginRequest | async"></ng-container>

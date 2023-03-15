@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {LoginComponent} from '../login.component';
 import {LoginFormModule} from "../components/login-form/common/login-form.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -11,10 +12,11 @@ import {LoginFormModule} from "../components/login-form/common/login-form.module
     exports: [
         LoginComponent,
     ],
-  imports: [
-    CommonModule,
-    LoginFormModule,
-  ],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        LoginFormModule,
+    ],
     providers: [],
 })
 export class LoginModule {
