@@ -1,3 +1,11 @@
-input.ng-invalid.ng-touched {
-  border-color: red;
+label {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+
+  &.ng-invalid.ng-touched {
+    border-color: red;
+  }
 }
