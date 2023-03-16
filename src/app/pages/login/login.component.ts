@@ -18,7 +18,7 @@ export class LoginComponent {
     onFormSubmit(loginDetails: LoginFormInterface) {
         this.loginRequest = this.loginService.login(loginDetails.userName, loginDetails.userName).pipe(
             tap((user: AppUser) => {
-                this.appService.setUser(user);
+                this.appService.setUser(new AppUser(user));
                 this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
             })
         );
