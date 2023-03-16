@@ -9,11 +9,8 @@ export function passwordValidator(): ValidatorFn {
         const value = control.value;
 
         // Todo REMOVE
-        // if (!value) {
-        //   return null;
-        // }
-        if (value) {
-            return null;
+        if (!value) {
+          return null;
         }
 
         const hasUpperCase = /[A-Z]+/.test(value);
