@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable, tap} from "rxjs";
-import {AppService, AppUser} from "../login/common/services/app/app.service";
+import {AppService, AppUser} from "../../services/app/app.service";
 
 @Component({
   selector: 'app-dashboard',
