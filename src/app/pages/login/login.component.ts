@@ -16,10 +16,10 @@ export class LoginComponent {
     }
 
     onFormSubmit(loginDetails: LoginFormInterface) {
-        console.log(loginDetails);
         this.loginRequest = this.loginService.login(loginDetails.userName, loginDetails.userName).pipe(
             tap((user: AppUser) => {
                 this.appService.setUser(user);
+                this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
             })
         );
     }

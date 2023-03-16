@@ -1,0 +1,4 @@
+<p>dashboard works!</p>
+<ng-container *ngIf="(appUser | async) as user">
+    {{user | json}}
+</ng-container>
