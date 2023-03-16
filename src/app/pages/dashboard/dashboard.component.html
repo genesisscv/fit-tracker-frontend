@@ -1,4 +1,7 @@
 <p>dashboard works!</p>
 <ng-container *ngIf="(appUser | async) as user">
+    <div>
+        <img [src]="user.image" class="profile-image"/>
+    </div>
     {{user | json}}
 </ng-container>
