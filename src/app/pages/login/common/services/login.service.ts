@@ -32,7 +32,7 @@ export class LoginService {
 
         }
         while(characterCode > maxCharacters) {
-            characterCode = characterCode / 2
+            characterCode = characterCode - maxCharacters;
         }
 
         return Math.floor(characterCode);

@@ -1,7 +1,34 @@
-<p>dashboard works!</p>
-<ng-container *ngIf="(appUser | async) as user">
-    <div>
-        <img [src]="user.image" class="profile-image"/>
+<div clas="container h-100 d-flex justify-content-center">
+    <div class="card character-card" *ngIf="(appUser | async) as user">
+        <div>
+            <img [src]="user.image" alt="Card image cap" class="card-img-top"/>
+        </div>
+        <div class="card-body">
+            <div class="title-container">
+                <h5 class="card-title me-2">{{user.name}}
+                </h5>
+                <span class="badge" [ngClass]="{
+                        'bg-success': user.status === 'Alive',
+                        'bg-danger' : user.status === 'Dead',
+                        'bg-secondary' : user.status === 'unknown'
+                    }">{{user.status}}</span>
+            </div>
+            <div class="card-text">
+                <ul>
+                    <li>
+                        Species: {{user.species}}
+                    </li>
+                    <li>
+                        Origin: {{user.origin.name}}
+                    </li>
+                    <li *ngIf="user.type">
+                        Type: {{user.type}}
+                    </li>
+                    <li>
+                        Episode Count: {{user.episode.length}}
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    {{user | json}}
-</ng-container>
+</div>
