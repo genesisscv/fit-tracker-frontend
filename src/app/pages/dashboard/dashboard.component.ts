@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable, tap} from "rxjs";
+import {Observable, of, tap} from "rxjs";
 import {AppService, AppUser} from "../../services/app/app.service";
 
 @Component({
@@ -8,7 +8,7 @@ import {AppService, AppUser} from "../../services/app/app.service";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-    appUser: Observable<AppUser>;
+    appUser: Observable<AppUser> = of();
 
     constructor(private appService: AppService) {
     }
