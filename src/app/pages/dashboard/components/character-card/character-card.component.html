@@ -27,6 +27,10 @@
                     <li>
                         Episode Count: {{character.episode.length}}
                     </li>
+                    <li *ngIf="character.location">
+                        Location: {{character.location.name}}
+                        <button (click)="onShowMore(character.location)" class="btn btn-primary">See more from {{character.location.name}}</button>
+                    </li>
                 </ul>
             </div>
         </div>

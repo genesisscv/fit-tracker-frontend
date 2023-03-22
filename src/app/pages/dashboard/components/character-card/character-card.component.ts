@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AppUser} from "../../../../services/app/app.service";
 
 @Component({
@@ -9,4 +9,11 @@ import {AppUser} from "../../../../services/app/app.service";
 export class CharacterCardComponent {
     @Input()
     public character: AppUser
+
+    @Output()
+    private showLocation: EventEmitter<any> = new EventEmitter<any>()
+
+    onShowMore(location: { name: string; url: string }) {
+        this.showLocation.emit(location);
+    }
 }
