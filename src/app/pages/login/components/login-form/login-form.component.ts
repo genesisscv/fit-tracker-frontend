@@ -13,6 +13,7 @@ export class LoginFormComponent implements OnInit {
   private onFormSubmit: EventEmitter<LoginFormInterface> = new EventEmitter<LoginFormInterface>()
 
   public form: FormGroup;
+  public hidePassword: boolean = true;
 
   constructor(private loginFormService: LoginFormService) {
   }
@@ -26,4 +27,9 @@ export class LoginFormComponent implements OnInit {
       this.onFormSubmit.emit(this.form.getRawValue())
     }
   }
+
+
+    togglePassword() {
+        this.hidePassword = !this.hidePassword
+    }
 }

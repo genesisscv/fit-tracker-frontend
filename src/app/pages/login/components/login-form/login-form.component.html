@@ -8,14 +8,17 @@
       </label>
     </div>
     <div class="mb-4">
-      <label>
-        Password
-        <br/>
-        <input formControlName="password" type="password">
-      </label>
+        <label>
+            Password
+            <input formControlName="password" [attr.type]="hidePassword? 'password': null">
+
+        </label>
     </div>
     <button type="submit" class="btn btn-primary">
       Login
     </button>
   </form>
+    <button (click)="togglePassword()" class="btn badge-danger">
+      {{hidePassword? "Show" : "Hide"}} Password
+    </button>
 </ng-container>
