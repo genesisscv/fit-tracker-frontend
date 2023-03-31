@@ -11,7 +11,6 @@ export class LoginService {
     }
 
     public login(userName: string, password: string): Observable<AppUser> {
-        this.getCharacterNumber(userName, password);
         return this.httpClient.get(`https://rickandmortyapi.com/api/character/${this.getCharacterNumber(userName, password)}`).pipe(
             map((userDetails) => {
                 return new AppUser(userDetails)
