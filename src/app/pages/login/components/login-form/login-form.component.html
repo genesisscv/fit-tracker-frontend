@@ -1,24 +1,33 @@
 <ng-container *ngIf="form">
-  <form [formGroup]="form" (submit)="onSubmit()">
-    <div class="mb-4">
-      <label>
-        User Name
-        <br/>
-        <input formControlName="userName">
-      </label>
-    </div>
-    <div class="mb-4">
-        <label>
-            Password
-            <input formControlName="password" [attr.type]="hidePassword? 'password': null">
-
-        </label>
-    </div>
-    <button type="submit" class="btn btn-primary">
-      Login
-    </button>
-  </form>
-    <button (click)="togglePassword()" class="btn badge-danger">
-      {{hidePassword? "Show" : "Hide"}} Password
-    </button>
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="mb-4">
+            <label>
+                User Name
+                <div class="input-group mb-3">
+                    <input formControlName="userName" aria-label="user name" class="form-control">
+                </div>
+            </label>
+        </div>
+        <div class="mb-4">
+            <label>
+                Password
+                <div class="input-group mb-3">
+                    <input formControlName="password" [attr.type]="hidePassword? 'password': null" class="form-control"
+                           aria-label="Password">
+                    <div class="input-group-append">
+                        <span (click)="togglePassword()"
+                              class="password-toggle input-group-text">
+                            <i class="bi" [ngClass]="{
+                                'bi-eye': hidePassword,
+                                'bi-eye-slash': !hidePassword
+                                }" ></i>
+                        </span>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Login
+        </button>
+    </form>
 </ng-container>
