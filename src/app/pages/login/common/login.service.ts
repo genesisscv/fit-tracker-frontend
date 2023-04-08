@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map, Observable, tap} from "rxjs";
-import {AppService} from "../../../../services/app/app.service";
+import {AppService} from "../../../services/app/app.service";
+import {AppUser} from "../../../services/app/app.models";
 import {ApiUser} from "./login.interfaces";
-import {AppUser} from "../../../../services/app/app.models";
 
 @Injectable({
     providedIn: 'root',
@@ -20,7 +20,6 @@ export class LoginService {
             tap((user: AppUser) => {
                 this.appService.setUser(user);
             })
-
         );
     }
 
