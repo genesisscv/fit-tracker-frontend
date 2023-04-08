@@ -1,31 +1,40 @@
 import { Injectable } from '@angular/core';
-import {delay, Observable, of} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionStorageService {
-    protected pageTitle: string = "A&G";
+    private _session: BehaviorSubject<SessionData> = new BehaviorSubject<SessionData>({} as SessionData)
+    public session: Observable<SessionData> = this._session.asObservable();
 
-    constructor() {}
+    protected sessionKey: string = "A&G";
 
-    public getData(): Observable<any> {
-        const storedObject: any = JSON.parse(
-            localStorage.getItem(this.pageTitle)?? '{}'
-        )
-
-        return of(storedObject[this.pageTitle]?? {}).pipe(delay(0));
+    constructor() {
+        this.setSession();
     }
 
-    public getSessionData(): Observable<any> {
-        const storedObject: any = JSON.parse(
-            localStorage.getItem(this.pageTitle)?? '{}'
-        )
-
-        return of(storedObject[this.pageTitle]?? {}).pipe(delay(0));
+    public clearData() {
+        localStorage.clear();
+        this.setSession();
     }
 
-    public updateData(sourceName: string, data: { [p: string]: any }) {
-        localStorage.setItem(this.pageTitle, JSON.stringify({[sourceName]: data}));
+    public updateData(data: { [p: string]: any }) {
+        localStorage.setItem(this.sessionKey, JSON.stringify(data));
+        this.setSession();
     }
+
+    private getStoredData(): SessionData {
+        return JSON.parse(
+            localStorage.getItem(this.sessionKey)?? '{}'
+        ) as SessionData
+    }
+
+    private setSession() {
+        this._session.next(this.getStoredData());
+    }
+}
+
+export interface SessionData {
+    user: {[key: string]: any};
 }

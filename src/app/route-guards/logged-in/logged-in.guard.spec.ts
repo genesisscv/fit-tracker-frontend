@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoggedInGuardGuard } from './logged-in.guard';
+import { LoggedInGuard } from './logged-in.guard';
 
 describe('LoggedInGuardGuard', () => {
-  let guard: LoggedInGuardGuard;
+  let guard: LoggedInGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

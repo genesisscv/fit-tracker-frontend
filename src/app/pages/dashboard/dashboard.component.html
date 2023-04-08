@@ -1,3 +1,4 @@
-<ng-container *ngIf="(appUser | async) as user">
+<button (click)="logOut()" class="btn btn-danger">log out</button>
+<ng-container *ngIf="(appUser | async)?.user as user">
     <character-card [character]="user" (showLocation)="onShowLocation($event)"></character-card>
 </ng-container>

@@ -1,48 +1,42 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {map, Observable, tap} from "rxjs";
+import {SessionData, SessionStorageService} from "../session/session-storage.service";
+import {AppData, AppUser} from "./app.models";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AppService {
-    private _user: BehaviorSubject<AppUser> = new BehaviorSubject<AppUser>(new AppUser())
-    public user: Observable<AppUser> = this._user.asObservable();
+    public appData: Observable<AppData>;
 
-    constructor() {
+    private sessionData: AppData;
+
+    constructor(private sessionStorage: SessionStorageService) {
+        this.appData = this.sessionStorage.session.pipe(
+            map((sessionData: SessionData) => {
+                return this.getAppDataFromSession(sessionData);
+            }),
+            tap((appData: AppData) => {
+                this.sessionData = appData;
+            })
+        );
     }
 
-    public setUser(user: AppUser) {
-        this._user.next(user);
+    public clearSessionData(): void {
+        this.sessionStorage.clearData();
     }
-}
 
-export class AppUser {
-    public id: number;
-    public name: string;
-    public status: string;
-    public species: string;
-    public type: string;
-    public gender: string;
-    public origin: {
-        name: string;
-        url: string
-    };
-    public location: {
-        name: string;
-        url: string
-    };
-    public image: string;
-    public episode: string[];
-    public url: string;
-    public created?: Date;
+    public setUser(appUser: AppUser) {
+        let updatedAppUserData: AppData = this.sessionData;
+        updatedAppUserData.user = appUser;
 
-    constructor(model?: Partial<AppUser>) {
-        if (model) {
-            Object.assign(this, model);
+        this.sessionStorage.updateData(updatedAppUserData);
+    }
 
-            if(model.created) {
-                this.created = new Date(model.created);
-            }
-        }
+    private getAppDataFromSession(sessionData: SessionData): AppData {
+        return new AppData({
+            user: new AppUser(sessionData.user)
+        });
     }
 }
+

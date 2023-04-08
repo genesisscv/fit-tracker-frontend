@@ -1,21 +1,31 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
-import {AppUser} from "../../../../services/app/app.service";
+import {map, Observable, tap} from "rxjs";
+import {AppService} from "../../../../services/app/app.service";
+import {ApiUser} from "./login.interfaces";
+import {AppUser} from "../../../../services/app/app.models";
 
 @Injectable({
     providedIn: 'root',
 })
 export class LoginService {
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient, private appService: AppService) {
     }
 
     public login(userName: string, password: string): Observable<AppUser> {
         return this.httpClient.get(`https://rickandmortyapi.com/api/character/${this.getCharacterNumber(userName, password)}`).pipe(
-            map((userDetails) => {
-                return new AppUser(userDetails)
+            map((userDetails: any) => {
+                return this.getAppUserFromUserGet(userDetails);
+            }),
+            tap((user: AppUser) => {
+                this.appService.setUser(user);
             })
+
         );
+    }
+
+    private getAppUserFromUserGet(userDetails: ApiUser): AppUser {
+        return new AppUser(userDetails);
     }
 
     private getCharacterNumber(userName: string, password: string) {
@@ -37,4 +47,3 @@ export class LoginService {
         return Math.floor(characterCode);
     }
 }
-

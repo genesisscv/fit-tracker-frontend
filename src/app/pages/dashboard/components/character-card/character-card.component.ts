@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {AppUser} from "../../../../services/app/app.service";
+import {AppUser} from "../../../../services/app/app.models";
 
 @Component({
   selector: 'character-card',
