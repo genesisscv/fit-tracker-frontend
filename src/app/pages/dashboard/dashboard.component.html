@@ -1,4 +1,6 @@
 <button (click)="logOut()" class="btn btn-danger">log out</button>
 <ng-container *ngIf="(appUser | async)?.user as user">
-    <character-card [character]="user" (showLocation)="onShowLocation($event)"></character-card>
+    <div class="character-card-container">
+        <character-card [character]="user" (showLocation)="onShowLocation($event)"></character-card>
+    </div>
 </ng-container>
