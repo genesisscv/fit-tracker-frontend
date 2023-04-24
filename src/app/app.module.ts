@@ -5,10 +5,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginModule} from "./pages/login/common/login.module";
 import {DashboardModule} from "./pages/dashboard/common/dashboard.module";
+import { WorkoutPageComponent } from './pages/dashboard/components/workout-page/workout-page.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        WorkoutPageComponent
     ],
     imports: [
         BrowserModule,

@@ -12,15 +12,17 @@ import {AppUser} from "../../services/app/app.models";
     styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-    public loginRequest: Observable<any>;
+    public loginRequest: Observable<any> | undefined;
 
     constructor(private loginService: LoginService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
     onFormSubmit(loginDetails: LoginFormInterface) {
-        this.loginRequest = this.loginService.login(loginDetails.userName, loginDetails.userName).pipe(
-            tap(() => {
-                this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
-            })
-        );
+        // this.loginRequest = this.loginService.login(loginDetails.userName, loginDetails.userName).pipe(
+        //     tap(() => {
+        //         this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
+        //     })
+        // );
+        this.loginService.login(loginDetails.userName, loginDetails.userName)
+        this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
     }
 }
