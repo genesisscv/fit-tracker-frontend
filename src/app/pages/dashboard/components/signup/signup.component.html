@@ -1,0 +1,16 @@
+<form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+    <label>Email:</label>
+    <input type="email" name="email" [(ngModel)]="email.value">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
+        <div *ngIf="email.errors.required">Email is required.</div>
+        <div *ngIf="email.errors['email']">Email must be a valid email address.</div>
+    </div>
+
+    <label>Password:</label>
+    <input type="password" name="password" [(ngModel)]="password.value">
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error">
+        <div *ngIf="password.errors.required">Password is required.</div>
+    </div>
+
+    <button type="submit" [disabled]="signupForm.invalid">Submit</button>
+</form>

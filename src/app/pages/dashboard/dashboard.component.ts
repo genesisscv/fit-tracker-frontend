@@ -31,4 +31,10 @@ export class DashboardComponent implements OnInit {
         this.appService.clearSessionData();
         this.router.navigate(['../login'], {relativeTo: this.activatedRoute});
     }
+
+    public workout() {
+        this.router.navigate(['../workout'], {relativeTo: this.activatedRoute});
+
+
+    }
 }
