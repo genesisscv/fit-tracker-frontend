@@ -1,3 +1,4 @@
+
 <ng-container *ngIf="form">
     <form [formGroup]="form" (submit)="onSubmit()">
         <div class="mb-3">
@@ -25,16 +26,16 @@
                                 }"></i>
                         </span>
                     </div>
-                    <div>
-                        <sub class="form-text"  >
-                            Passwords must be 5 characters contain Upper, Case Lower Case, and Number
-                        </sub>
-                    </div>
+                    <button class="info-button-password" type="button" data-placement="left" title="Passwords must be 5 characters contain Upper, Case Lower Case, and Number">
+                        info
+                    </button>
                 </div>
             </label>
         </div>
+        <div class="d-grid gap-2">
         <button type="submit" class="btn btn-primary">
             Login
         </button>
+        </div>
     </form>
 </ng-container>
