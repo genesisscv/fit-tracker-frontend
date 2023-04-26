@@ -6,11 +6,13 @@ import {AppComponent} from './app.component';
 import {LoginModule} from "./pages/login/common/login.module";
 import {DashboardModule} from "./pages/dashboard/common/dashboard.module";
 import { WorkoutPageComponent } from './pages/dashboard/components/workout-page/workout-page.component';
+import { NavbarComponent } from './pages/login/components/navbar/navbar.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        WorkoutPageComponent
+        WorkoutPageComponent,
+        NavbarComponent
     ],
     imports: [
         BrowserModule,
