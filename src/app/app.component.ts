@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoginService} from "./pages/login/common/login.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Academy';
+  title = 'Fit Tracker';
+  //isLoggedIn: boolean = false;
+    constructor(public authService: LoginService) {}
+  //logic to check if user is logged in
 }

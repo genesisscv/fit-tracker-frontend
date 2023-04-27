@@ -9,9 +9,18 @@ import {ApiUser} from "./login.interfaces";
     providedIn: 'root',
 })
 export class LoginService {
+
+    public isLoggedIn: boolean = false;
     constructor(private httpClient: HttpClient, private appService: AppService) {
     }
 
+    public loggedIn() {
+        this.isLoggedIn = true;
+    }
+
+    public loggedOut(): void {
+        this.isLoggedIn = false;
+    }
     public login(userName: string, password: string):void
         // Observable<AppUser>
     {
@@ -24,6 +33,7 @@ export class LoginService {
         //     })
         // );
         window.alert("login works!")
+        this.loggedIn();
 
     }
 
