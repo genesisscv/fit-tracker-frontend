@@ -1,6 +1,9 @@
-.btn, .btn-danger {
+.btn {
+    color: white;
     background-color: transparent;
     border-color: transparent;
-    justify-content: left;
+    justify-content: center;
+    display: flex;
+    flex-direction: column-reverse;
 
 }

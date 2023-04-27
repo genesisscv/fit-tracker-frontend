@@ -18,4 +18,9 @@ export class NavbarComponent {
         this.appService.clearSessionData();
         this.router.navigate(['../login'], {relativeTo: this.activatedRoute});
     }
+
+    dashboard() {
+        this.appService.clearSessionData();
+        this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
+    }
 }
