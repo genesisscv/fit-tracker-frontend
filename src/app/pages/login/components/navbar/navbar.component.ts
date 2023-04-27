@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {LoginService} from "../../common/login.service";
+import {AppService} from "../../../../services/app/app.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +9,13 @@ import {LoginService} from "../../common/login.service";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-    //constructor(public authService: LoginService) {}
+    constructor(private appService: AppService, private router: Router, private activatedRoute: ActivatedRoute, private authService: LoginService) {
 
+    }
 
-    // ngOnInit() {
-    //     // some code to determine if user is logged in
-    //     this.isLoggedIn = true;
-    // }
-
+    logOut() {
+        this.authService.loggedOut();
+        this.appService.clearSessionData();
+        this.router.navigate(['../login'], {relativeTo: this.activatedRoute});
+    }
 }
