@@ -16,7 +16,7 @@ export class LoggedOutGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> {
 
-        this.authService.loggedOut();
+      
         return this.appService.appData.pipe(
             map((appData: AppData) => {
                 if(appData.user.id) {

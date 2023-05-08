@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     }
 
     public logOut() {
-        this.authService.loggedOut();
+    
         this.appService.clearSessionData();
         this.router.navigate(['../login'], {relativeTo: this.activatedRoute});
     }

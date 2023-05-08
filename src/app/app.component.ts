@@ -9,6 +9,6 @@ import {LoginService} from "./pages/login/common/login.service";
 export class AppComponent {
   title = 'Fit Tracker';
   //isLoggedIn: boolean = false;
-    constructor(public authService: LoginService) {}
+    constructor() {}
   //logic to check if user is logged in
 }

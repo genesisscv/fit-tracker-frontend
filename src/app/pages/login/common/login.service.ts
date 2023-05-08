@@ -10,30 +10,30 @@ import {ApiUser} from "./login.interfaces";
 })
 export class LoginService {
 
-    public isLoggedIn: boolean = false;
+    // public isLoggedIn: boolean = false;
     constructor(private httpClient: HttpClient, private appService: AppService) {
     }
 
-    public loggedIn() {
-        this.isLoggedIn = true;
-    }
+    // public loggedIn() {
+    //     this.isLoggedIn = true;
+    // }
 
-    public loggedOut(): void {
-        this.isLoggedIn = false;
-    }
-    public login(userName: string, password: string):void
-        // Observable<AppUser>
+    // public loggedOut(): void {
+    //     this.isLoggedIn = false;
+    // }
+    public login(userName: string, password: string):
+        Observable<AppUser>
     {
-        // return this.httpClient.get(`https://rickandmortyapi.com/api/character/${this.getCharacterNumber(userName, password)}`).pipe(
-        //     map((userDetails: any) => {
-        //         return this.getAppUserFromUserGet(userDetails);
-        //     }),
-        //     tap((user: AppUser) => {
-        //         this.appService.setUser(user);
-        //     })
-        // );
+        return this.httpClient.get(`https://rickandmortyapi.com/api/character/${this.getCharacterNumber(userName, password)}`).pipe(
+            map((userDetails: any) => {
+                return this.getAppUserFromUserGet(userDetails);
+            }),
+            tap((user: AppUser) => {
+                this.appService.setUser(user);
+            })
+        );
         window.alert("login works!")
-        this.loggedIn();
+        
 
     }
 

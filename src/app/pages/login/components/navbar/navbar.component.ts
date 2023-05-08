@@ -14,7 +14,7 @@ export class NavbarComponent {
     }
 
     logOut() {
-        this.authService.loggedOut();
+      
         this.appService.clearSessionData();
         this.router.navigate(['../login'], {relativeTo: this.activatedRoute});
     }
