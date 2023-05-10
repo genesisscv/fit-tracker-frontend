@@ -2,20 +2,20 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./pages/login/login.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
-import {LoggedInGuard} from "./route-guards/logged-in/logged-in.guard";
-import {LoggedOutGuard} from "./route-guards/logged-out/logged-out.guard";
+import {loggedInGuard} from "./route-guards/logged-in/logged-in.guard";
+import {loggedOutGuard} from "./route-guards/logged-out/logged-out.guard";
 import {WorkoutPageComponent} from "./pages/workout-page/workout-page.component";
 
 const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
-        // canActivate: [LoggedInGuard]
+        canActivate: [loggedInGuard]
     },
     {
         path: 'dashboard',
         component: DashboardComponent,
-        // canActivate: [LoggedOutGuard]
+        canActivate: [loggedOutGuard]
     },
     {
         path: 'workout',

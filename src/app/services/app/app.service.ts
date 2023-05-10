@@ -8,6 +8,11 @@ import {AppData, AppUser} from "./app.models";
 })
 export class AppService {
     public appData: Observable<AppData>;
+    public isLoggedIn = new Observable<boolean>((subscribe) => {
+        this.sessionStorage.session.subscribe((session) => {
+            subscribe.next(session?.user?.id !== undefined);
+        })
+    });
 
     //private sessionData?: AppData;
 
@@ -20,15 +25,6 @@ export class AppService {
                 this.sessionData = appData;
             })*/
         );
-    }
-
-    public isLoggedIn(): Observable<boolean> {
-        return new Observable<boolean>((subscribe) => {
-            this.sessionStorage.session.subscribe((session) => {
-                subscribe.next(session?.user?.id !== undefined);
-            })
-        });
-        // return this.sessionData?.user?.id !== undefined;
     }
 
     public clearSessionData(): void {
