@@ -17,12 +17,12 @@ export class LoginComponent {
     constructor(private loginService: LoginService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
     onFormSubmit(loginDetails: LoginFormInterface) {
-        // this.loginRequest = this.loginService.login(loginDetails.userName, loginDetails.userName).pipe(
-        //     tap(() => {
-        //         this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
-        //     })
-        // );
-        this.loginService.login(loginDetails.userName, loginDetails.userName)
-        this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
+        this.loginRequest = this.loginService.login(loginDetails.userName, loginDetails.userName).pipe(
+            tap(() => {
+                this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
+            })
+        );
+        // this.loginService.login(loginDetails.userName, loginDetails.userName)
+        // this.router.navigate(['../dashboard'], {relativeTo: this.activatedRoute});
     }
 }

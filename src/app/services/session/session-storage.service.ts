@@ -36,5 +36,8 @@ export class SessionStorageService {
 }
 
 export interface SessionData {
-    user: {[key: string]: any};
+    user: {
+        id: number;
+        [key: string]: any;
+    };
 }

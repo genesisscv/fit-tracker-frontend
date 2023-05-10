@@ -1,7 +1,7 @@
 <!--Logic to check if an user is logged in (true or false)-->
-<!--<p>{{authService.isLoggedIn}}</p> -->
+<!-- <p>{{appService.isLoggedIn() | async}}</p> -->
 
-<app-navbar></app-navbar>
+<app-navbar *ngIf="appService.isLoggedIn() | async"></app-navbar>
 
 
 <!-- *ngIf="isLoggedIn"-->
