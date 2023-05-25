@@ -5,6 +5,7 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {loggedInGuard} from "./route-guards/logged-in/logged-in.guard";
 import {loggedOutGuard} from "./route-guards/logged-out/logged-out.guard";
 import {WorkoutPageComponent} from "./pages/workout-page/workout-page.component";
+import { ExerciseLogComponent } from './pages/exercise-log/exercise-log.component';
 
 const routes: Routes = [
     {
@@ -20,6 +21,11 @@ const routes: Routes = [
     {
         path: 'workout',
         component: WorkoutPageComponent,
+
+    },
+    {
+        path: 'exercise-log',
+        component: ExerciseLogComponent,
 
     },
     {

@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class WorkoutPageComponent {
 
+  items: string[] = ['Squats', 'Deadlifts', 'Bicepcurls', 'Bench Press'];
+
 }

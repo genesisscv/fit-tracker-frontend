@@ -1,0 +1,35 @@
+
+<p class="h1">Add Exercise Entry</p>
+
+  <form [formGroup]="newExerciseEntry" (submit)="addExerciseEntry()">
+    <label for="exercise">Exercise:</label>
+    <input id="exercise" type="text" formControlName="exercise">
+  
+    <label for="sets">Sets:</label>
+    <input id="sets" type="number" formControlName="sets">
+
+    <label for="repetitions">Repetitions:</label>
+    <input id="repetitions" type="number" formControlName="repetitions">
+  
+    <button type="submit">Add Entry</button>
+  </form>
+
+  <hr>
+
+  <!-- <div *ngFor="let entry of exerciseEntries">
+    <h3>{{ entry.exercise }}</h3>
+    <p>Sets: {{ entry.sets }}</p>
+    <p>Repetitions: {{ entry.repetitions }}</p>
+  </div> -->
+
+  <div *ngFor="let entry of exerciseEntries" class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ entry.exercise }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ entry.sets }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">{{ entry.repetitions }}</h6>
+      
+    
+    </div>
+  </div>
+  
+  
