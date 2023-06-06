@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ExerciseService, ExerciseEntry } from '../../services/exercise.service';
 
-interface ExerciseEntry {
-  exercise: string;
-  sets: number;
-  repetitions: number;
-}
+
 
 @Component({
   selector: 'app-exercise-log',
@@ -14,14 +11,21 @@ interface ExerciseEntry {
   
 })
 
+
 export class ExerciseLogComponent {
+
+   constructor ( private exerciseService: ExerciseService) {}
+
   exerciseEntries: ExerciseEntry[] = [];
   newExerciseEntry: FormGroup = this.getNewExerciseEntry();
 
   addExerciseEntry(): void {
     const newEntry: ExerciseEntry = this.newExerciseEntry.getRawValue();
+
   
     this.exerciseEntries.push(newEntry);
+
+    this.exerciseService.saveExercises(this.exerciseEntries)
   
     this.newExerciseEntry = this.getNewExerciseEntry();
     // this.newExerciseEntry.reset();

@@ -9,13 +9,15 @@ import { WorkoutPageComponent } from './pages/workout-page/workout-page.componen
 import { NavbarComponent } from './pages/login/components/navbar/navbar.component';
 import { ExerciseLogComponent } from './pages/exercise-log/exercise-log.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         WorkoutPageComponent,
         NavbarComponent,
-        ExerciseLogComponent
+        ExerciseLogComponent,
+        WorkoutLogComponent
     ],
     imports: [
         BrowserModule,

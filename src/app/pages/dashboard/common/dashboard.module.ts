@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 
 import {DashboardComponent} from "../dashboard.component";
-import {CharacterCardModule} from "../components/character-card/common/character-card.module";
+// import {CharacterCardModule} from "../components/character-card/common/character-card.module";
 
 @NgModule({
     declarations: [
@@ -13,7 +13,7 @@ import {CharacterCardModule} from "../components/character-card/common/character
     ],
     imports: [
         CommonModule,
-        CharacterCardModule
+        // CharacterCardModule
     ],
     providers: [],
 })
