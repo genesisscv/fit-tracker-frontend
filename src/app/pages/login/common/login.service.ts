@@ -41,7 +41,7 @@ export class LoginService {
         return this.httpClient.post(`http://localhost:8080/login`, body, { responseType: 'text' }).pipe(
             switchMap((response: string) => {
                 console.log('Response:', response);
-                window.alert("login returns id!" + response)
+                window.alert("login returns username!" + response)
                 return this.httpClient.get(`http://localhost:8080/users/username/${userName}`);
             }),
             tap((user: any) => {
