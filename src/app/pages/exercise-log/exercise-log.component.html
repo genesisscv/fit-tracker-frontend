@@ -1,31 +1,75 @@
 <p class="h1">Add {{ exerciseType }} Entry</p>
 
 <form [formGroup]="newExerciseEntry" (submit)="addExerciseEntry()">
-    <!-- <label for="exercise">Exercise:</label> -->
-    <input id="exercise" type="hidden" formControlName="exercise" />
+    <div class="form-group row">
+        <label for="weight" class="col-sm-2 col-form-label">WEIGHT (kgs)</label>
+        <div class="col-sm-10">
+            <input
+                id="weight"
+                type="number"
+                class="form-control"
+                formControlName="weight"
+            />
+        </div>
+    </div>
 
-    <label for="sets">Sets:</label>
-    <input id="sets" type="number" formControlName="sets" />
+    <div class="form-group row">
+        <!-- <label for="exercise">Exercise:</label> -->
+        <!-- <input id="exercise" type="hidden" formControlName="exercise" /> -->
+        <label for="sets" class="col-sm-2 col-form-label">SETS</label>
+        <div class="col-sm-10">
+            <input
+                id="sets"
+                type="number"
+                class="form-control"
+                formControlName="sets"
+            />
+        </div>
+    </div>
 
-    <label for="repetitions">Repetitions:</label>
-    <input id="repetitions" type="number" formControlName="repetitions" />
-
-    <button type="submit">Add</button>
-    <button type="button" (click)="getNewExerciseEntry()">Clear</button>
+    <div class="form-group row">
+        <label for="repetitions" class="col-sm-2 col-form-label">REPS</label>
+        <div class="col-sm-10">
+            <input
+                id="repetitions"
+                type="number"
+                class="form-control"
+                formControlName="repetitions"
+            />
+        </div>
+    </div>
+    <button class="btn btn-secondary" type="submit">Add</button>
+    <button
+        class="btn btn-danger"
+        type="button"
+        (click)="getNewExerciseEntry()"
+    >
+        Clear
+    </button>
 </form>
 
 <hr />
 
 <div
     *ngFor="let entry of exerciseEntries; let i = index"
-    class="card"
+    class="card mx-auto"
     style="width: 18rem"
 >
     <div class="card-body">
         <h5 class="card-title">{{ entry.exercise }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{ entry.sets }}</h6>
-        <h6 class="card-subtitle mb-2 text-muted">{{ entry.repetitions }}</h6>
-        <button type="button" (click)="deleteExerciseEntry(i)">Delete</button>
+        <h6 class="card-subtitle mb-2 text-muted">{{ entry.weight }} kgs</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{ entry.sets }} sets</h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{ entry.repetitions }} reps
+        </h6>
+
+        <button
+            class="btn btn-danger"
+            type="button"
+            (click)="deleteExerciseEntry(i)"
+        >
+            Delete
+        </button>
     </div>
 </div>
 

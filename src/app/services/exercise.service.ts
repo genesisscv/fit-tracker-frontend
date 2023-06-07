@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface ExerciseEntry {
     exercise: string;
+    weight: number;
     sets: number;
     repetitions: number;
 }

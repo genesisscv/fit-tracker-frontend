@@ -1,9 +1,16 @@
 <p class="h1">Workout Log</p>
 
-<div *ngFor="let entry of exerciseEntries" class="card" style="width: 18rem">
+<div
+    *ngFor="let entry of exerciseEntries"
+    class="card mx-auto"
+    style="width: 18rem"
+>
     <div class="card-body">
         <h5 class="card-title">{{ entry.exercise }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{ entry.sets }}</h6>
-        <h6 class="card-subtitle mb-2 text-muted">{{ entry.repetitions }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{ entry.weight }} kgs</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{ entry.sets }} sets</h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{ entry.repetitions }} reps
+        </h6>
     </div>
 </div>
