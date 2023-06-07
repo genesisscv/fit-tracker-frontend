@@ -14,24 +14,23 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ExerciseLogComponent implements OnInit {
     exerciseEntries: ExerciseEntry[] = [];
     newExerciseEntry!: FormGroup;
+    exerciseType: string = '';
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private exerciseService: ExerciseService
-    ) {
-        console.log('hello there');
-    }
+    ) {}
 
     ngOnInit(): void {
-        console.log('hello');
-        this.newExerciseEntry = this.getNewExerciseEntry();
+        this.getNewExerciseEntry();
         this.route.queryParams.subscribe((params) => {
             console.log(params);
+            this.exerciseType = params['exercise'];
 
-            if (params['exercise']) {
+            if (this.exerciseType) {
                 this.newExerciseEntry.patchValue({
-                    exercise: params['exercise'],
+                    exercise: this.exerciseType,
                 });
             }
         });
@@ -40,19 +39,26 @@ export class ExerciseLogComponent implements OnInit {
     addExerciseEntry(): void {
         const newEntry: ExerciseEntry = this.newExerciseEntry.getRawValue();
         this.exerciseEntries.push(newEntry);
-        this.exerciseService.saveExercises(this.exerciseEntries);
-        this.newExerciseEntry = this.getNewExerciseEntry();
+
+        this.getNewExerciseEntry();
     }
 
-    getNewExerciseEntry(): FormGroup {
-        return new FormGroup({
-            exercise: new FormControl(''),
+    getNewExerciseEntry() {
+        this.newExerciseEntry = new FormGroup({
+            exercise: new FormControl(this.exerciseType),
             sets: new FormControl(0),
             repetitions: new FormControl(0),
         });
     }
 
+    deleteExerciseEntry(index: number) {
+        this.exerciseEntries.splice(index, 1);
+        // this.exerciseService.deleteExercise();
+    }
+
     public submitSets() {
+        this.exerciseService.saveExercises(this.exerciseEntries);
+
         this.router.navigate(['../workout-log'], {
             relativeTo: this.route,
         });

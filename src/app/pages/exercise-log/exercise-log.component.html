@@ -1,8 +1,8 @@
-<p class="h1">Add exercise Entry</p>
+<p class="h1">Add {{ exerciseType }} Entry</p>
 
 <form [formGroup]="newExerciseEntry" (submit)="addExerciseEntry()">
-    <label for="exercise">Exercise:</label>
-    <input id="exercise" type="text" formControlName="exercise" />
+    <!-- <label for="exercise">Exercise:</label> -->
+    <input id="exercise" type="hidden" formControlName="exercise" />
 
     <label for="sets">Sets:</label>
     <input id="sets" type="number" formControlName="sets" />
@@ -10,16 +10,22 @@
     <label for="repetitions">Repetitions:</label>
     <input id="repetitions" type="number" formControlName="repetitions" />
 
-    <button type="submit">Save</button>
+    <button type="submit">Add</button>
+    <button type="button" (click)="getNewExerciseEntry()">Clear</button>
 </form>
 
 <hr />
 
-<div *ngFor="let entry of exerciseEntries" class="card" style="width: 18rem">
+<div
+    *ngFor="let entry of exerciseEntries; let i = index"
+    class="card"
+    style="width: 18rem"
+>
     <div class="card-body">
         <h5 class="card-title">{{ entry.exercise }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ entry.sets }}</h6>
         <h6 class="card-subtitle mb-2 text-muted">{{ entry.repetitions }}</h6>
+        <button type="button" (click)="deleteExerciseEntry(i)">Delete</button>
     </div>
 </div>
 
