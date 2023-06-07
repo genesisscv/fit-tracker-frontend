@@ -4,7 +4,7 @@ import {
     ExerciseService,
     ExerciseEntry,
 } from '../../services/exercise.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-exercise-log',
@@ -17,6 +17,7 @@ export class ExerciseLogComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private exerciseService: ExerciseService
     ) {
         console.log('hello there');
@@ -48,6 +49,12 @@ export class ExerciseLogComponent implements OnInit {
             exercise: new FormControl(''),
             sets: new FormControl(0),
             repetitions: new FormControl(0),
+        });
+    }
+
+    public submitSets() {
+        this.router.navigate(['../workout-log'], {
+            relativeTo: this.route,
         });
     }
 }
