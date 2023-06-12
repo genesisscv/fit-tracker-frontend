@@ -20,8 +20,6 @@ export class AppUser {
     }
 }
 
-
-
 // Initial code
 
 // export class AppUser {
