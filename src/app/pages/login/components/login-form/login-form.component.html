@@ -1,11 +1,14 @@
-
 <ng-container *ngIf="form">
     <form [formGroup]="form" (submit)="onSubmit()">
         <div class="mb-3">
             <label>
                 User Name
                 <div class="input-group mb-3">
-                    <input formControlName="userName" aria-label="user name" class="form-control">
+                    <input
+                        formControlName="userName"
+                        aria-label="user name"
+                        class="form-control"
+                    />
                 </div>
             </label>
         </div>
@@ -13,29 +16,40 @@
             <label>
                 Password
                 <div class="input-group mb-3">
-                    <input formControlName="password" [attr.type]="hidePassword? 'password': null" class="form-control"
-                           aria-label="Password">
-                    <div>
-                    </div>
+                    <input
+                        formControlName="password"
+                        [attr.type]="hidePassword ? 'password' : null"
+                        class="form-control"
+                        aria-label="Password"
+                    />
+                    <div></div>
                     <div class="input-group-append">
-                        <span (click)="togglePassword()"
-                              class="password-toggle input-group-text">
-                            <i class="bi" [ngClass]="{
-                                'bi-eye': hidePassword,
-                                'bi-eye-slash': !hidePassword
-                                }"></i>
+                        <span
+                            (click)="togglePassword()"
+                            class="password-toggle input-group-text"
+                        >
+                            <i
+                                class="bi"
+                                [ngClass]="{
+                                    'bi-eye': hidePassword,
+                                    'bi-eye-slash': !hidePassword
+                                }"
+                            ></i>
                         </span>
                     </div>
-                    <button class="info-button-password" type="button" data-placement="left" title="Passwords must be 5 characters contain Upper, Case Lower Case, and Number">
+                    <button
+                        class="info-button-password"
+                        type="button"
+                        data-placement="left"
+                        title="Passwords must be 5 characters contain Upper, Case Lower Case, and Number"
+                    >
                         info
                     </button>
                 </div>
             </label>
         </div>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary">
-            Login
-        </button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
 </ng-container>

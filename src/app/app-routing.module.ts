@@ -7,12 +7,17 @@ import { loggedOutGuard } from './route-guards/logged-out/logged-out.guard';
 import { WorkoutPageComponent } from './pages/workout-page/workout-page.component';
 import { ExerciseLogComponent } from './pages/exercise-log/exercise-log.component';
 import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
+import { SignupComponent } from './pages/signup/signup/signup.component';
 
 const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
         canActivate: [loggedInGuard],
+    },
+    {
+        path: 'signup',
+        component: SignupComponent,
     },
     {
         path: 'dashboard',

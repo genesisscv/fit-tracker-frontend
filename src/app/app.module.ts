@@ -10,6 +10,8 @@ import { NavbarComponent } from './pages/login/components/navbar/navbar.componen
 import { ExerciseLogComponent } from './pages/exercise-log/exercise-log.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
+import { SignupComponent } from './pages/signup/signup/signup.component';
+import { SignupFormComponent } from './pages/signup/signup-form/signup-form/signup-form.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
         WorkoutPageComponent,
         NavbarComponent,
         ExerciseLogComponent,
-        WorkoutLogComponent
+        WorkoutLogComponent,
+        SignupComponent,
+        SignupFormComponent
     ],
     imports: [
         BrowserModule,
