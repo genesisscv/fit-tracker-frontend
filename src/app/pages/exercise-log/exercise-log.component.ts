@@ -45,6 +45,7 @@ export class ExerciseLogComponent implements OnInit {
 
     getNewExerciseEntry() {
         this.newExerciseEntry = new FormGroup({
+            id: new FormControl(0),
             exercise: new FormControl(this.exerciseType),
             weight: new FormControl(0),
             sets: new FormControl(0),
