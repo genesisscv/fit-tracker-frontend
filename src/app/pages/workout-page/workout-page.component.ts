@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {
+    ExerciseService,
+    ExerciseEntry,
+} from '../../services/exercise.service';
 
 @Component({
     selector: 'app-workout-page',
@@ -7,9 +11,27 @@ import { Router } from '@angular/router';
     styleUrls: ['./workout-page.component.scss'],
 })
 export class WorkoutPageComponent {
-    items: string[] = ['Squats', 'Deadlifts', 'Bicepcurls', 'Bench Press'];
+    items: string[] = [];
     selectedExercise: string = '';
-    router: any;
+
+    constructor(
+        private router: Router,
+        private exerciseService: ExerciseService
+    ) {}
+
+    ngOnInit() {
+        this.fetchExerciseNames();
+    }
+
+    fetchExerciseNames() {
+        this.exerciseService
+            .getExerciseEntries()
+            .subscribe((entries: ExerciseEntry[]) => {
+                this.items = entries.map(
+                    (entry: ExerciseEntry) => entry.exercise
+                );
+            });
+    }
 
     selectExercise(item: string): void {
         this.selectedExercise = item;

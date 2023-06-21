@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface ExerciseEntry {
     exercise: string;
@@ -11,15 +13,15 @@ export interface ExerciseEntry {
     providedIn: 'root',
 })
 export class ExerciseService {
-    constructor() {}
+    private saveExerciseEntriesUrl = 'http://localhost:8080/exercises';
 
-    saveExercises(exercises: ExerciseEntry[]) {
-        let currentExercises = this.getExercises();
-        let allExercises = currentExercises.concat(exercises);
-        sessionStorage.setItem('exercises', JSON.stringify(allExercises));
+    constructor(private http: HttpClient) {}
+
+    saveExerciseEntries(entries: ExerciseEntry[]): Observable<any> {
+        return this.http.post(this.saveExerciseEntriesUrl, entries);
     }
 
-    getExercises(): ExerciseEntry[] {
-        return JSON.parse(sessionStorage.getItem('exercises') ?? '[]');
+    getExerciseEntries(): Observable<ExerciseEntry[]> {
+        return this.http.get<ExerciseEntry[]>(this.saveExerciseEntriesUrl);
     }
 }

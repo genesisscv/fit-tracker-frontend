@@ -1,22 +1,26 @@
-import { Component } from '@angular/core';
-import { ExerciseService, ExerciseEntry } from '../../services/exercise.service';
-
+import { Component, OnInit } from '@angular/core';
+import {
+    ExerciseService,
+    ExerciseEntry,
+} from '../../services/exercise.service';
 
 @Component({
-  selector: 'app-workout-log',
-  templateUrl: './workout-log.component.html',
-  styleUrls: ['./workout-log.component.scss']
+    selector: 'app-workout-log',
+    templateUrl: './workout-log.component.html',
+    styleUrls: ['./workout-log.component.scss'],
 })
-export class WorkoutLogComponent {
+export class WorkoutLogComponent implements OnInit {
+    constructor(private exerciseService: ExerciseService) {}
 
-  constructor ( private exerciseService: ExerciseService) {}
+    exerciseEntries: ExerciseEntry[] = [];
 
-  exerciseEntries: ExerciseEntry[] = [];
+    ngOnInit() {
+        this.getExerciseEntries();
+    }
 
-
-
-  ngOnInit(){
-    this.exerciseEntries = this.exerciseService.getExercises()
-  }
-
+    getExerciseEntries() {
+        this.exerciseService.getExerciseEntries().subscribe((entries) => {
+            this.exerciseEntries = entries;
+        });
+    }
 }

@@ -59,10 +59,18 @@ export class ExerciseLogComponent implements OnInit {
     }
 
     public submitSets() {
-        this.exerciseService.saveExercises(this.exerciseEntries);
-
-        this.router.navigate(['../workout-log'], {
-            relativeTo: this.route,
-        });
+        this.exerciseService
+            .saveExerciseEntries(this.exerciseEntries)
+            .subscribe({
+                next: () => {
+                    this.router.navigate(['../workout-log'], {
+                        relativeTo: this.route,
+                    });
+                },
+                error: (error) => {
+                    console.error('Error saving exercise entries:', error);
+                    // Handle the error and display an error message to the user
+                },
+            });
     }
 }
