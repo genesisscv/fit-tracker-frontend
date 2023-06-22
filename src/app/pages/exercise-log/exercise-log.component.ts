@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import {
-    ExerciseService,
-    ExerciseEntry,
-} from '../../services/exercise.service';
+import { ExerciseDataService } from '../../services/exercise-data.service';
+import { ExerciseEntry } from '../../services/exercise.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as fs from 'fs';
 
 @Component({
     selector: 'app-exercise-log',
@@ -19,7 +18,7 @@ export class ExerciseLogComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private exerciseService: ExerciseService
+        private exerciseDataService: ExerciseDataService
     ) {}
 
     ngOnInit(): void {
@@ -58,10 +57,17 @@ export class ExerciseLogComponent implements OnInit {
     }
 
     public submitSets() {
-        this.exerciseService.saveExercises(this.exerciseEntries);
+        const jsonData = JSON.stringify(this.exerciseEntries);
 
-        this.router.navigate(['../workout-log'], {
-            relativeTo: this.route,
+        fs.writeFile('assets/exercise-entries.json', jsonData, (err) => {
+            if (err) {
+                console.error('Error saving exercise entries:', err);
+                // Handle the error and display an error message to the user
+            } else {
+                this.router.navigate(['../workout-log'], {
+                    relativeTo: this.route,
+                });
+            }
         });
     }
 }

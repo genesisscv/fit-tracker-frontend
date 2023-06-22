@@ -1,10 +1,10 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {LoginModule} from "./pages/login/common/login.module";
-import {DashboardModule} from "./pages/dashboard/common/dashboard.module";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginModule } from './pages/login/common/login.module';
+import { DashboardModule } from './pages/dashboard/common/dashboard.module';
 import { WorkoutPageComponent } from './pages/workout-page/workout-page.component';
 import { NavbarComponent } from './pages/login/components/navbar/navbar.component';
 import { ExerciseLogComponent } from './pages/exercise-log/exercise-log.component';
@@ -17,7 +17,7 @@ import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
         WorkoutPageComponent,
         NavbarComponent,
         ExerciseLogComponent,
-        WorkoutLogComponent
+        WorkoutLogComponent,
     ],
     imports: [
         BrowserModule,
@@ -28,7 +28,6 @@ import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
         ReactiveFormsModule,
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
