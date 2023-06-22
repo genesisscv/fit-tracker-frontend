@@ -7,6 +7,7 @@ import { loggedOutGuard } from './route-guards/logged-out/logged-out.guard';
 import { WorkoutPageComponent } from './pages/workout-page/workout-page.component';
 import { ExerciseLogComponent } from './pages/exercise-log/exercise-log.component';
 import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
+import { WorkoutHistoryComponent } from './pages/workout-history/workout-history.component';
 
 const routes: Routes = [
     {
@@ -30,6 +31,10 @@ const routes: Routes = [
     {
         path: 'workout-log',
         component: WorkoutLogComponent,
+    },
+    {
+        path: 'workout-history',
+        component: WorkoutHistoryComponent,
     },
     {
         path: '**',
