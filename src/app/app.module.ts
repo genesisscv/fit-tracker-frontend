@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
 import { SignupComponent } from './pages/signup/signup/signup.component';
 import { SignupFormComponent } from './pages/signup/signup-form/signup-form/signup-form.component';
+import { WorkoutHistoryComponent } from './pages/workout-history/workout-history.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { SignupFormComponent } from './pages/signup/signup-form/signup-form/sign
         ExerciseLogComponent,
         WorkoutLogComponent,
         SignupComponent,
-        SignupFormComponent
+        SignupFormComponent,
+        WorkoutHistoryComponent
     ],
     imports: [
         BrowserModule,

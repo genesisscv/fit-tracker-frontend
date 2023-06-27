@@ -1,5 +1,16 @@
 <p class="h1">Workout Log</p>
 
+<div class="form-group">
+    <input
+        type="text"
+        class="form-control"
+        id="workoutDate"
+        [(ngModel)]="workoutDate"
+        name="workoutDate"
+        placeholder="Enter date (DD/MM/YY)"
+    />
+</div>
+
 <div
     *ngFor="let entry of exerciseEntries"
     class="card mx-auto"
@@ -14,3 +25,7 @@
         </h6>
     </div>
 </div>
+
+<button (click)="submitWorkout()" class="new-workout-btn btn btn-primary">
+    Submit Workout
+</button>

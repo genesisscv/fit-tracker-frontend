@@ -7,6 +7,11 @@ export interface ExerciseEntry {
     repetitions: number;
 }
 
+export interface WorkoutEntry {
+    date: string;
+    exercises: ExerciseEntry[];
+}
+
 @Injectable({
     providedIn: 'root',
 })
@@ -21,5 +26,20 @@ export class ExerciseService {
 
     getExercises(): ExerciseEntry[] {
         return JSON.parse(sessionStorage.getItem('exercises') ?? '[]');
+    }
+
+    saveWorkout(workoutData: WorkoutEntry): void {
+        // Added method
+        let workoutEntries = this.getWorkoutEntries();
+        workoutEntries.push(workoutData);
+        sessionStorage.setItem(
+            'workoutEntries',
+            JSON.stringify(workoutEntries)
+        );
+    }
+
+    getWorkoutEntries(): WorkoutEntry[] {
+        // Added method
+        return JSON.parse(sessionStorage.getItem('workoutEntries') ?? '[]');
     }
 }

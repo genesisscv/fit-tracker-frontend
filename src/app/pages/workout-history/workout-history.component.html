@@ -1,0 +1,21 @@
+<p class="h1">Workout History</p>
+
+<div
+    *ngFor="let workout of workoutHistory"
+    class="card mx-auto"
+    style="width: 18rem"
+>
+    <div class="card-body">
+        <h5 class="card-title">{{ workout.date }}</h5>
+        <div *ngFor="let entry of workout.exercises" class="card mb-2">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">
+                    {{ entry.exercise }}
+                </h6>
+                <p class="card-text">Weight: {{ entry.weight }} kgs</p>
+                <p class="card-text">Sets: {{ entry.sets }}</p>
+                <p class="card-text">Repetitions: {{ entry.repetitions }}</p>
+            </div>
+        </div>
+    </div>
+</div>

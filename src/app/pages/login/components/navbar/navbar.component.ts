@@ -38,4 +38,10 @@ export class NavbarComponent {
             relativeTo: this.activatedRoute,
         });
     }
+
+    workoutHistory() {
+        this.router.navigate(['../workout-history'], {
+            relativeTo: this.activatedRoute,
+        });
+    }
 }

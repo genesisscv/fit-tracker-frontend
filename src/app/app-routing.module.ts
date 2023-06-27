@@ -8,6 +8,7 @@ import { WorkoutPageComponent } from './pages/workout-page/workout-page.componen
 import { ExerciseLogComponent } from './pages/exercise-log/exercise-log.component';
 import { WorkoutLogComponent } from './pages/workout-log/workout-log.component';
 import { SignupComponent } from './pages/signup/signup/signup.component';
+import { WorkoutHistoryComponent } from './pages/workout-history/workout-history.component';
 
 const routes: Routes = [
     {
@@ -35,6 +36,11 @@ const routes: Routes = [
     {
         path: 'workout-log',
         component: WorkoutLogComponent,
+    },
+
+    {
+        path: 'workout-history',
+        component: WorkoutHistoryComponent,
     },
     {
         path: '**',
