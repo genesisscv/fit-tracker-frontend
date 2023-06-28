@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SignupService } from '../signup-form/common/signup-form-service/signup.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-signup',
@@ -8,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
+    signupForm: FormGroup;
     username!: string;
     password!: string;
     error!: string;
@@ -18,7 +20,12 @@ export class SignupComponent {
         private signupService: SignupService,
         private router: Router,
         private activatedRoute: ActivatedRoute
-    ) {}
+    ) {
+        this.signupForm = new FormGroup({
+            userName: new FormControl(''),
+            password: new FormControl(''),
+        });
+    }
 
     onSubmit() {
         this.signupService.signup(this.username, this.password).subscribe({

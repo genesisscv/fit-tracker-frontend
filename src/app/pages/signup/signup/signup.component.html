@@ -4,7 +4,7 @@
             <h1>Sign Up</h1>
         </div>
 
-        <form (ngSubmit)="onSubmit()">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label
                     >User Name
