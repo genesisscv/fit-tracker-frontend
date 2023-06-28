@@ -1,16 +1,18 @@
 <p class="h1">Workout History</p>
 
-<div>
-    <select id="workout-date" [(ngModel)]="selectedDate">
-        <option value="">Select Date</option>
+<div class="filter-container">
+    <select
+        class="form-control"
+        id="dropdownMenuButton"
+        [(ngModel)]="selectedDate"
+    >
+        <option value="">Select Date and Click On Filter</option>
         <option *ngFor="let date of workoutDates" [value]="date">
             {{ date }}
         </option>
     </select>
     <button (click)="filterWorkouts()" class="btn btn-primary">Filter</button>
 </div>
-
-<hr />
 
 <div *ngIf="(filteredWorkouts?.exercises)!.length > 0; else noWorkouts">
     <div
