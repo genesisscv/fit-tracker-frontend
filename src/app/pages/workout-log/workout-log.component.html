@@ -12,7 +12,7 @@
 </div>
 
 <div
-    *ngFor="let entry of exerciseEntries"
+    *ngFor="let entry of exerciseEntries; let i = index"
     class="card mx-auto"
     style="width: 18rem"
 >
@@ -23,6 +23,13 @@
         <h6 class="card-subtitle mb-2 text-muted">
             {{ entry.repetitions }} reps
         </h6>
+        <button
+            class="btn btn-danger"
+            type="button"
+            (click)="deleteExerciseEntry(i)"
+        >
+            Delete
+        </button>
     </div>
 </div>
 

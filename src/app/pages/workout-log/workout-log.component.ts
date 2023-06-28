@@ -36,4 +36,9 @@ export class WorkoutLogComponent {
             relativeTo: this.route,
         });
     }
+
+    deleteExerciseEntry(index: number) {
+        this.exerciseEntries.splice(index, 1);
+        // this.exerciseService.deleteExercise();
+    }
 }

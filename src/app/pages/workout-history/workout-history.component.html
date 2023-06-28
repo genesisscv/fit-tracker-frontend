@@ -1,14 +1,13 @@
 <p class="h1">Workout History</p>
 
 <div>
-    <label for="workout-date">Select Date:</label>
     <select id="workout-date" [(ngModel)]="selectedDate">
-        <option value="">All</option>
+        <option value="">Select Date</option>
         <option *ngFor="let date of workoutDates" [value]="date">
             {{ date }}
         </option>
     </select>
-    <button (click)="filterWorkouts()">Filter</button>
+    <button (click)="filterWorkouts()" class="btn btn-primary">Filter</button>
 </div>
 
 <hr />
