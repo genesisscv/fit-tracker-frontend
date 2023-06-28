@@ -1,21 +1,37 @@
 <p class="h1">Workout History</p>
 
-<div
-    *ngFor="let workout of workoutHistory"
-    class="card mx-auto"
-    style="width: 18rem"
->
-    <div class="card-body">
-        <h5 class="card-title">{{ workout.date }}</h5>
-        <div *ngFor="let entry of workout.exercises" class="card mb-2">
-            <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">
-                    {{ entry.exercise }}
-                </h6>
-                <p class="card-text">Weight: {{ entry.weight }} kgs</p>
-                <p class="card-text">Sets: {{ entry.sets }}</p>
-                <p class="card-text">Repetitions: {{ entry.repetitions }}</p>
-            </div>
+<div>
+    <label for="workout-date">Select Date:</label>
+    <select id="workout-date" [(ngModel)]="selectedDate">
+        <option value="">All</option>
+        <option *ngFor="let date of workoutDates" [value]="date">
+            {{ date }}
+        </option>
+    </select>
+    <button (click)="filterWorkouts()">Filter</button>
+</div>
+
+<hr />
+
+<div *ngIf="(filteredWorkouts?.exercises)!.length > 0; else noWorkouts">
+    <div
+        *ngFor="let entry of filteredWorkouts?.exercises"
+        class="card mx-auto"
+        style="width: 18rem"
+    >
+        <div class="card-body">
+            <h5 class="card-title">{{ entry.exercise }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                {{ entry.weight }} kgs
+            </h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ entry.sets }} sets</h6>
+            <h6 class="card-subtitle mb-2 text-muted">
+                {{ entry.repetitions }} reps
+            </h6>
         </div>
     </div>
 </div>
+
+<ng-template #noWorkouts>
+    <p>No workouts found.</p>
+</ng-template>

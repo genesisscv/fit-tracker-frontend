@@ -24,8 +24,7 @@ export class WorkoutLogComponent {
     ngOnInit() {
         this.exerciseEntries = this.exerciseService.getExercises();
     }
-
-    submitWorkout() {
+    public submitWorkout() {
         const workoutData: WorkoutEntry = {
             date: this.workoutDate,
             exercises: this.exerciseEntries,

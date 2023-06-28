@@ -29,7 +29,6 @@ export class ExerciseService {
     }
 
     saveWorkout(workoutData: WorkoutEntry): void {
-        // Added method
         let workoutEntries = this.getWorkoutEntries();
         workoutEntries.push(workoutData);
         sessionStorage.setItem(
@@ -39,7 +38,7 @@ export class ExerciseService {
     }
 
     getWorkoutEntries(): WorkoutEntry[] {
-        // Added method
-        return JSON.parse(sessionStorage.getItem('workoutEntries') ?? '[]');
+        const workoutEntry = sessionStorage.getItem('workoutEntries');
+        return workoutEntry ? JSON.parse(workoutEntry) : [];
     }
 }
