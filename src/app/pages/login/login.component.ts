@@ -8,7 +8,6 @@ import { Observable, lastValueFrom, throwError } from 'rxjs';
 // import { SessionStorageService } from '../../services/session/session-storage.service';
 import { AppUser } from '../../services/app/app.models';
 
-
 @Component({
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
@@ -24,35 +23,25 @@ export class LoginComponent {
     async onFormSubmit(loginDetails: LoginFormInterface) {
         try {
             this.loginRequest = await lastValueFrom(
-                this.loginService.login(loginDetails.userName, loginDetails.password).pipe(
-                    tap(() => {
-                        this.router.navigate(['../dashboard'], { relativeTo: this.activatedRoute });
-                    }),
-                    catchError((error) => {
-                        // Handle the error here
-                        console.error('Login failed:', error);
-                        // You can perform additional error handling, such as displaying an error message
-                        return throwError(error);
-                    })
-                )
+                this.loginService
+                    .login(loginDetails.userName, loginDetails.password)
+                    .pipe(
+                        tap(() => {
+                            this.router.navigate(['../dashboard'], {
+                                relativeTo: this.activatedRoute,
+                            });
+                        }),
+                        catchError((error) => {
+                            // Handle the error here
+                            console.error('Login failed:', error);
+                            // You can perform additional error handling, such as displaying an error message
+                            return throwError(error);
+                        })
+                    )
             );
-            
-
         } catch (error) {
             // Handle any errors thrown during the login process
             console.error('Login failed:', error);
         }
     }
 }
-
-//     onFormSubmit(loginDetails: LoginFormInterface) {
-//         this.loginRequest = this.loginService.login(loginDetails.userName, loginDetails.password)
-//             .pipe(
-//                 tap(() => {
-//                     this.router.navigate(['../dashboard'], { relativeTo: this.activatedRoute });
-//                 })
-//             )
-//             .toPromise()
-//             .then();
-//     }
-// }

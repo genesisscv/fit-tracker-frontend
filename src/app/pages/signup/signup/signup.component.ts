@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SignupService } from '../signup-form/common/signup-form-service/signup.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-signup',
@@ -14,7 +14,11 @@ export class SignupComponent {
 
     public hidePassword: boolean = true;
 
-    constructor(private signupService: SignupService, private router: Router) {}
+    constructor(
+        private signupService: SignupService,
+        private router: Router,
+        private activatedRoute: ActivatedRoute
+    ) {}
 
     onSubmit() {
         this.signupService.signup(this.username, this.password).subscribe({
@@ -31,5 +35,11 @@ export class SignupComponent {
 
     togglePassword() {
         this.hidePassword = !this.hidePassword;
+    }
+
+    login() {
+        this.router.navigate(['../login'], {
+            relativeTo: this.activatedRoute,
+        });
     }
 }

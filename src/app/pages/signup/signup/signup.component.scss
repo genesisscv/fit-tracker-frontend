@@ -5,3 +5,23 @@
   .main-text-signup{
     margin-bottom: 10%;
 }
+
+label {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+
+  &.ng-invalid.ng-touched {
+    border-color: red;
+  }
+}
+
+.info-button-password {
+    border: 1px solid #ced4da;
+}
+
+.login-btn {
+  color: #0069d9;
+  font-weight: bold;}
